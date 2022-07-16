@@ -48,11 +48,11 @@ wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(te
 plt.figure( figsize=(15,10))
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
-plt.show()
+#plt.show()
 
-data["label"] = data["label"].map({0: "No Stress", 1: "stress"})
+data["label"] = data["label"].map({0: "No Stress", 1: "Stress"})
 data = data[["text", "label"]]
-#print(data.head())
+print(data.head())
 
 
 #split dataset into training and test sets.
