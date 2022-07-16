@@ -13,10 +13,9 @@ from sklearn.naive_bayes import BernoulliNB
 
 
 data = pd.read_csv("stress.csv")
-print(data.head())
 
 #checking if contains null values or not
-print(data.isnull().sum())
+#print(data.isnull().sum())
 
 
 nltk.download('stopwords')
@@ -53,7 +52,7 @@ plt.show()
 
 data["label"] = data["label"].map({0: "No Stress", 1: "stress"})
 data = data[["text", "label"]]
-print(data.head())
+#print(data.head())
 
 
 #split dataset into training and test sets.
@@ -67,3 +66,10 @@ xtrain, xtest, ytrain, ytest = train_test_split(X, y, test_size=0.33, random_sta
 
 model = BernoulliNB()
 model.fit(xtrain, ytrain)
+
+# testing performance.
+
+user = input("Enter a text: ")
+data = cv.transform([user]).toarray()
+output = model.predict(data)
+print(output)
